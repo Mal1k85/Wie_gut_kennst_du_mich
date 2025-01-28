@@ -21,6 +21,7 @@ README.md:   Diese Datei, die Informationen über das Projekt enthält.
 
 🖼️ Screenshots
 Screenshot des Spiels:
+
 ![image](https://github.com/user-attachments/assets/002eecb3-10d1-452d-ad5d-bc8af9ae2c1a)
 
 🤝 Mitwirken
