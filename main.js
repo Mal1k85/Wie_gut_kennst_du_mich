@@ -33,7 +33,7 @@ function naechsteFrage() {
         // Sieg Animation
         document.body.innerHTML += `
             <div class="siegerehrung">
-                <img src="goldmedaille.png" alt="Goldmedaille" class="medaille">
+                <img src="./Assets/images/goldmedaille.png" alt="Goldmedaille" class="medaille">
                 <p>Danke, dass du mitgemacht hast!</p>
                 <p>Besuche doch gerne meine GitHub-Seite!</p>
             </div>
