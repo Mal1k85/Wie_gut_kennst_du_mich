@@ -1,4 +1,7 @@
 body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #0f172a, #1e293b);
     margin: 0;
@@ -13,6 +16,9 @@ body {
 
 /* Titel / Header */
 .title {
+    display: grid;
+    justify-content: center;
+    align-items: center;
     background: #1e293b;
     padding: 20px;
     width: 100%;
@@ -23,6 +29,9 @@ body {
 
 /* Container */
 .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
     background: rgba(0, 30, 60, 0.8);
     padding: 30px;
     border-radius: 10px;
