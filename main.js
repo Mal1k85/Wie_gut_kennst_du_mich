@@ -2,12 +2,12 @@ const fragen = [
     { frage: "Wie alt bin ich? (in Jahren)", antwort: ["39", "neununddreißig"] },
     { frage: "Was ist meine Lieblingsfarbe?", antwort: ["grün"] },
     { frage: "In welcher Stadt bin ich geboren?", antwort: ["hakkari", "cukurca"] },
-    { frage: "Was ist mein Lieblingsessen?", antwort: ["nudeln", "pasta"] },
-    { frage: "Welcher ist mein Lieblingsfilm?", antwort: ["interstellar"] },
-    { frage: "Welcher ist mein Lieblingssport?", antwort: ["basketball"] },
-    { frage: "Nenne einer meiner Hobbys", antwort: ["singen", "musik"] },
+    { frage: "Was ist eines meiner Lieblingsessen?", antwort: ["nudeln", "pasta"] },
+    { frage: "Nenne einen meiner Lieblingsfilme?", antwort: ["interstellar"] },
+    { frage: "Mein Lieblingssport ist?", antwort: ["basketball"] },
+    { frage: "Nenne eines meiner Hobbys", antwort: ["singen", "musik"] },
     { frage: "Was ist mein Sternzeichen?", antwort: ["löwe"] },
-    { frage: "Was ist mein Lieblings-Musik-Genre?", antwort: ["hip-hop", "rap"] }
+    { frage: "Was ist eine meiner Lieblings-Musik-Genre?", antwort: ["hip-hop", "rap"] }
 ];
 
 let aktuelleFrageIndex = 0;
