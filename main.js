@@ -1,13 +1,13 @@
 const fragen = [
-    { frage: "Wie alt bin ich? (in Jahren)", antwort: "39" },
-    { frage: "Was ist meine Lieblingsfarbe?", antwort: "Grün"},
-    { frage: "In welcher Stadt bin ich geboren?", antwort: "Hakkari"},
-    { frage: "Was ist mein Lieblingsessen?", antwort: "Nudeln"},
-    { frage: "Welcher ist mein Lieblingsfilm?", antwort: "Interstellar"},
-    { frage: "Welcher ist mein Lieblingssport", antwort: "Basketball"},
-    { frage: "Nenne einer meiner Hobbys", antwort: "singen"},
-    { frage: "Was ist mein Sternzeichen?", antwort: "Löwe"},
-    { frage: "Was ist mein Lieblings-Musik-Genre?", antwort: "Hip-Hop"}
+    { frage: "Wie alt bin ich? (in Jahren)", antwort: ["39", "neununddreißig"] },
+    { frage: "Was ist meine Lieblingsfarbe?", antwort: ["grün"] },
+    { frage: "In welcher Stadt bin ich geboren?", antwort: ["hakkari", "cukurca"] },
+    { frage: "Was ist mein Lieblingsessen?", antwort: ["nudeln", "pasta"] },
+    { frage: "Welcher ist mein Lieblingsfilm?", antwort: ["interstellar"] },
+    { frage: "Welcher ist mein Lieblingssport?", antwort: ["basketball"] },
+    { frage: "Nenne einer meiner Hobbys", antwort: ["singen", "musik"] },
+    { frage: "Was ist mein Sternzeichen?", antwort: ["löwe"] },
+    { frage: "Was ist mein Lieblings-Musik-Genre?", antwort: ["hip-hop", "rap"] }
 ];
 
 let aktuelleFrageIndex = 0;
@@ -18,6 +18,7 @@ const antwortInput = document.getElementById('antwortInput');
 const antwortButton = document.getElementById('antwortButton');
 const ergebnisText = document.getElementById('ergebnisText');
 const punktestandText = document.getElementById('punktestandText');
+const antwortListe = document.getElementById('antwortListe');
 
 function naechsteFrage() {
     if (aktuelleFrageIndex < fragen.length) {
@@ -25,23 +26,42 @@ function naechsteFrage() {
         antwortInput.value = '';
         ergebnisText.textContent = '';
     } else {
-        frageText.textContent = "Das Spiel ist vorbei!";
+        frageText.textContent = "🎉 Das Spiel ist vorbei! 🎉";
         antwortInput.style.display = 'none';
         antwortButton.style.display = 'none';
-        punktestandText.textContent = `Du hast ${punkte} von ${fragen.length} Punkten erreicht.`;
+
+        // Sieg Animation
+        document.body.innerHTML += `
+            <div class="siegerehrung">
+                <img src="goldmedaille.png" alt="Goldmedaille" class="medaille">
+                <p>Danke, dass du mitgemacht hast!</p>
+                <p>Besuche doch gerne meine GitHub-Seite!</p>
+            </div>
+        `;
     }
 }
 
 antwortButton.addEventListener('click', function () {
     const benutzerAntwort = antwortInput.value.trim().toLowerCase();
-    const richtigeAntwort = fragen[aktuelleFrageIndex].antwort.toLowerCase();
+    const richtigeAntworten = fragen[aktuelleFrageIndex].antwort.map(a => a.toLowerCase());
 
-    if (benutzerAntwort === richtigeAntwort) {
+    let ergebnis = richtigeAntworten.includes(benutzerAntwort) ? "Richtig! ✅" : "Falsch! ❌";
+    
+    if (richtigeAntworten.includes(benutzerAntwort)) {
         punkte++;
-        ergebnisText.textContent = "Richtig! 🎉";
-    } else {
-        ergebnisText.textContent = `Falsch! Die richtige Antwort war: ${richtigeAntwort}.`;
     }
+
+    ergebnisText.innerHTML = `<span class="${ergebnis === "Richtig! ✅" ? 'richtig' : 'falsch'}">${ergebnis}</span>`;
+
+    // Antwortliste aktualisieren
+    const neueAntwort = document.createElement('p');
+    neueAntwort.innerHTML = `Frage: <strong>${fragen[aktuelleFrageIndex].frage}</strong><br> 
+                             Deine Antwort: <strong>${benutzerAntwort}</strong><br>
+                             Richtige Antwort: <strong>${richtigeAntworten.join(", ")}</strong><br>
+                             <span class="${ergebnis === "Richtig! ✅" ? 'richtig' : 'falsch'}">${ergebnis}</span>`;
+    antwortListe.appendChild(neueAntwort);
+
+    punktestandText.textContent = `Punkte: ${punkte} von ${fragen.length}`;
 
     aktuelleFrageIndex++;
     naechsteFrage();
